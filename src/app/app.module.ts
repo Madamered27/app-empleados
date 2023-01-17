@@ -13,6 +13,7 @@ import { QuienesComponentComponent } from './quienes-component/quienes-component
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 
 //se van a almacenar las rutas
 const appRoutes : Routes =[
@@ -21,7 +22,8 @@ const appRoutes : Routes =[
   {path:'proyectos', component : ProyectosComponentComponent},
   {path:'quienes', component : QuienesComponentComponent},
   {path:'contacto', component : ContactoComponentComponent},
-  {path:'actualiza/:id', component : ActualizaComponentComponent}
+  {path:'actualiza/:id', component : ActualizaComponentComponent},
+  {path:'**', component : ErrorPersonalizadoComponent}
 ];
 
 
@@ -34,7 +36,8 @@ const appRoutes : Routes =[
     ProyectosComponentComponent,
     QuienesComponentComponent,
     ContactoComponentComponent,
-    ActualizaComponentComponent
+    ActualizaComponentComponent,
+    ErrorPersonalizadoComponent
   ],
   imports: [
     BrowserModule,
