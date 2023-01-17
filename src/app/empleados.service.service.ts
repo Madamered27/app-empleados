@@ -26,4 +26,21 @@ export class EmpleadosServiceService {
     this.empleados.push(empleado);
   }
 
+  buscarEmpleado(id : number){
+    let empleado : Empleado = this.empleados[id];
+    return empleado;
+  }
+
+  modificarEmpleado(id : number, empleado : Empleado){
+    let empleadoModificado = this.empleados[id];
+    empleadoModificado.nombre = empleado.nombre;
+    empleadoModificado.apellido = empleado.apellido;
+    empleadoModificado.cargo = empleado.cargo;
+    empleadoModificado.salario = empleado.salario;
+  }
+
+  eliminarEmpleado(id : number){
+    this.empleados.splice(id,1);
+  }
+
 }

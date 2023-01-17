@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col">
         <div>
+          <!-- routerLink sirve para enrutar a donde se especifique, o sea redirigir al componente que se quiera usar -->
+          <a [routerLink]="['/actualiza', indice]">
           {{indice + 1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
+          </a>
         </div>
         <ul style="list-style:none;">
           <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
