@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
+import { DataServices } from './data.services';
 import { Empleado } from './empleado.model';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpleadosServiceService {
 
+  empleados:Empleado[] = [];
   
+  // los servicios que se quieran usar se tienen que injectar
+  constructor(private ventanaEmergente:ServicioEmpleadosService, private dataServices:DataServices){}
+    
 
-  constructor(private ventanaEmergente : ServicioEmpleadosService) { 
-    
+  setEmpleados(misEmpleados:Empleado[]){
+    this.empleados = misEmpleados;
   }
-    
-  
-  empleados : Empleado[] = [
-    new Empleado("Maria", "Lopez", "Comercial", 1500),
-    new Empleado("Ana", "Gomez", "Gerente", 4500),
-    new Empleado("Raul", "Vega", "Encargado", 2500),
-    new Empleado("Martin", "Montiel", "Asistente", 1000)
-  ]
+
+  obtenerEmpleados(){
+    //devuelve un Observable (permiten operaciones asincronas, o sea actualizar en segundo plano la informacion que hay almacenada en un almacen de datos sin tener que estar realizando consultas repetitivas)
+    //en segundo plano y sin que tengamos que hacer consultas de tipo select el Observable va a actualizar la info que hay en la bd
+    //para poder usar objetos Observable hay que suscribirnos a ellos
+    return this.dataServices.obtenerEmpleados();
+  }
 
   agregarEmpleadoService(empleado : Empleado){
     this.ventanaEmergente.muestraMensaje(`Datos ingresados: ${empleado.nombre} ${empleado.apellido}, ${empleado.cargo} $${empleado.salario}`)
     this.empleados.push(empleado);
+    this.dataServices.guardarEmpleados(this.empleados);
   }
 
   buscarEmpleado(id : number){

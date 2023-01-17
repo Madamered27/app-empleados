@@ -18,10 +18,14 @@ export class HomeComponentComponent implements OnInit{
   constructor(empleadoService : ServicioEmpleadosService, empleadoData : EmpleadosServiceService){
     this.empleadoService = empleadoService;
     this.empleadoServiceData = empleadoData;
-    //this.empleados = this.empleadoServiceData.empleados;
   }
   ngOnInit(): void {
-    this.empleados = this.empleadoServiceData.empleados;
+    //usamos variable para almacenar lo que devuelve el subscribe()
+    this.empleadoServiceData.obtenerEmpleados().subscribe(misEmpleados=>{
+      console.log(misEmpleados)
+      this.empleados = Object.values(misEmpleados);
+      this.empleadoServiceData.setEmpleados(this.empleados);
+    });
   }
   empleados : Empleado[] = []
   nombre : String = "";

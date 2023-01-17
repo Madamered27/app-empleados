@@ -4,7 +4,6 @@
       <div class="col">
         <div>
           {{indice + 1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
-
           <!-- routerLink sirve para enrutar a donde se especifique, o sea redirigir al componente que se quiera usar -->
           <!-- queryParams para pasar el valor que vamos a identificarlo con una variable, en este caso accion -->
           <a [routerLink]="['/actualiza', indice]" [queryParams]="{accion: '1'}">
