@@ -36,18 +36,6 @@ export class ActualizaComponentComponent {
   }
 
 
-  /*modificarEmpleado(){
-    let miEmpleado = new Empleado(this.nombre, this.apellido, this.cargo, this.salario)
-    this.empleadoServiceData.modificarEmpleado(this.id,miEmpleado);
-    this.router.navigate([""])
-  }
-
-  eliminarEmpleado(){
-    this.empleadoServiceData.eliminarEmpleado(this.id);
-    this.router.navigate([""])
-  }*/
-
-
   accionEmpleado(){
     if(this.accion == 1){
       let miEmpleado = new Empleado(this.nombre, this.apellido, this.cargo, this.salario)

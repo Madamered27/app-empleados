@@ -43,10 +43,18 @@ export class EmpleadosServiceService {
     empleadoModificado.apellido = empleado.apellido;
     empleadoModificado.cargo = empleado.cargo;
     empleadoModificado.salario = empleado.salario;
+    this.dataServices.modificarEmpleado(id,empleado);
   }
 
   eliminarEmpleado(id : number){
     this.empleados.splice(id,1);
+    this.dataServices.eliminarEmpleado(id);
+
+    if(this.empleados != null){
+      //esto soluciona el problema de los indices de la db volviendo a reconstruir los indices
+      this.dataServices.guardarEmpleados(this.empleados);
+    }
+    
   }
 
 }

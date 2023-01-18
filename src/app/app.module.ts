@@ -16,6 +16,8 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { LoginService } from './login-component/login.service';
 
 //se van a almacenar las rutas
 const appRoutes : Routes =[
@@ -25,6 +27,7 @@ const appRoutes : Routes =[
   {path:'quienes', component : QuienesComponentComponent},
   {path:'contacto', component : ContactoComponentComponent},
   {path:'actualiza/:id', component : ActualizaComponentComponent},
+  {path:'login', component : LoginComponentComponent},
   {path:'**', component : ErrorPersonalizadoComponent}
 ];
 
@@ -39,7 +42,8 @@ const appRoutes : Routes =[
     QuienesComponentComponent,
     ContactoComponentComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponent
+    ErrorPersonalizadoComponent,
+    LoginComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ const appRoutes : Routes =[
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadosServiceService, DataServices],
+  providers: [ServicioEmpleadosService, EmpleadosServiceService, DataServices, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
