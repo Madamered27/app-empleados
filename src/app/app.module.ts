@@ -18,14 +18,16 @@ import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { LoginService } from './login-component/login.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginGuardian } from './login-component/login-guardian';
 
 //se van a almacenar las rutas
 const appRoutes : Routes =[
   //path url
   {path:'', component: HomeComponentComponent},
   {path:'proyectos', component : ProyectosComponentComponent},
-  {path:'quienes', component : QuienesComponentComponent},
-  {path:'contacto', component : ContactoComponentComponent},
+  {path:'quienes', component : QuienesComponentComponent, canActivate:[LoginGuardian]},
+  {path:'contacto', component : ContactoComponentComponent, canActivate:[LoginGuardian]},
   {path:'actualiza/:id', component : ActualizaComponentComponent},
   {path:'login', component : LoginComponentComponent},
   {path:'**', component : ErrorPersonalizadoComponent}
@@ -51,7 +53,7 @@ const appRoutes : Routes =[
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadosServiceService, DataServices, LoginService],
+  providers: [ServicioEmpleadosService, EmpleadosServiceService, DataServices, LoginService, CookieService, LoginGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
